@@ -1,0 +1,13 @@
+export type AmplifyDependentResourcesAttributes = {
+    "auth": {
+        "rspreact46ea4db00": {
+            "IdentityPoolId": "string",
+            "IdentityPoolName": "string",
+            "UserPoolId": "string",
+            "UserPoolArn": "string",
+            "UserPoolName": "string",
+            "AppClientIDWeb": "string",
+            "AppClientID": "string"
+        }
+    }
+}
