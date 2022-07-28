@@ -6,6 +6,26 @@ import '@aws-amplify/ui-react/styles.css';
 import { listNotes } from './graphql/queries';
 import { createNote as createNoteMutation, deleteNote as deleteNoteMutation } from './graphql/mutations';
 
+
+//
+import { Amplify, PubSub } from 'aws-amplify';
+import { AWSIoTProvider } from '@aws-amplify/pubsub';
+Amplify.addPluggable(new AWSIoTProvider({
+  aws_pubsub_region: 'us-east-1',
+  aws_pubsub_endpoint: 'wss://a30vla8s15o1pq-ats.iot.us-east-1.amazonaws.com/mqtt',
+}));
+
+
+
+PubSub.subscribe('test').subscribe({
+  next: data => console.log('Message received', data),
+  error: error => console.error(error),
+  complete: () => console.log('Done'),
+});
+
+
+//
+
 const initialFormState = { name: '', description: '' }
 
 function App({ signOut, user }) {
