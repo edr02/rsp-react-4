@@ -1,0 +1,12 @@
+{
+  "resourceName": "s30cde24b7",
+  "policyUUID": "0cde24b7",
+  "bucketName": "rspreact48fa851a4524a484cb06ce6a8dfcbcfcc",
+  "storageAccess": "auth",
+  "guestAccess": [],
+  "authAccess": [
+    "CREATE_AND_UPDATE"
+  ],
+  "triggerFunction": "NONE",
+  "groupAccess": {}
+}
