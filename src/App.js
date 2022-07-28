@@ -9,8 +9,8 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import logo from './logo.svg';
 Amplify.configure(awsconfig);
 
-var SUB_TOPIC = "test";
-var PUB_TOPIC = "test";
+var SUB_TOPIC = "esp8266/pub";
+var PUB_TOPIC = "esp8266/sub";
 
 // Apply plugin with configuration
 Amplify.addPluggable(new AWSIoTProvider({
@@ -25,7 +25,7 @@ async function ProcessMessage(payload) {
   var dati2=payload;
   let time=payload.value;
   let scrollBox = document.getElementById('incomingMsg');
-  scrollBox.innerHTML += "<b>NEW MESSAGE: </b><br></br> Topic: " + topic + "<br></br> Dati: " + dati + "<br></br> Dati2: " + dati2 + "<br></br>";
+  scrollBox.innerHTML += "<b>NEW MESSAGE: </b><br></br> Topic: " + topic + "<br></br> Dati: " + dati + "<br></br>";
   scrollBox.scrollTop = scrollBox.scrollHeight;
 }
 
