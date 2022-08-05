@@ -21,11 +21,10 @@ Amplify.addPluggable(new AWSIoTProvider({
 async function ProcessMessage(payload) {
   console.log('Message received', payload);
   let topic=payload.value[Object.getOwnPropertySymbols(payload.value)[0]];
-  let dati=payload.value[Object.getOwnPropertyNames(payload.value)[0]];
-  var dati2=payload;
-  let time=payload.value;
+  let response=payload.value.Response;
+  let hours_of_work=payload.value.Hours_of_work;
   let scrollBox = document.getElementById('incomingMsg');
-  scrollBox.innerHTML += "<b>NEW MESSAGE: </b><br></br> Topic: " + topic + "<br></br> Dati: " + dati + "<br></br>";
+  scrollBox.innerHTML += "<b>NEW MESSAGE: </b><br></br> Topic: " + topic + "<br></br> Response: " + response + "<br></br> Hours of work: " + hours_of_work + "<br></br>";
   scrollBox.scrollTop = scrollBox.scrollHeight;
 }
 
@@ -33,7 +32,7 @@ async function SendMessage() {
   let payload=document.getElementById('msg').value;
   document.getElementById('msg').value='';
   console.log(payload);
-  await PubSub.publish(PUB_TOPIC, { msg: payload });
+  await PubSub.publish(PUB_TOPIC,payload);
   document.getElementById('returnMsg').innerHTML = '<h3 style="color: green">Message sent!</h3>';
   let sentMsgBox = document.getElementById('sentMsg');
   sentMsgBox.innerHTML += payload + "<br></br>";
